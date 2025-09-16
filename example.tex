@@ -1,0 +1,25 @@
+\documentclass[12pt]{letter}
+\pagestyle{empty}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[colorlinks,urlcolor=black]{hyperref}
+\usepackage[margin=22mm]{geometry}
+\usepackage{invoice}
+
+\newcommand{\Me}{Bob Cratchit\\Scrooge and Marley Ltd\\London\\\email{bob@scrooge.com}}
+\newcommand{\Boss}{Mr Scrooge\\Scrooge and Marley Ltd\\London\\\email{ebenezer@scrooge.com}}
+
+\begin{document}
+  \invoice{
+    \Me
+  }{
+    \Boss
+  }{
+    \gig{Work on Monday}{15th September 2025}{8}%
+    \gig{Work on Tuesday}{16th September 2025}{5}%
+    \gig{Work on Wednesday}{17th September 2025}{10}%
+    \gig{Work on Thursday}{18th September 2025}{7}%
+    \gig{Work on Friday}{19th September 2025}{8}%
+  }{
+    \bankdetails{MR B CRATCHIT}{01-01-01}{11223344}
+  }
+\end{document}
