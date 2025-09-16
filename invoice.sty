@@ -1,0 +1,56 @@
+\ProvidesPackage{invoice}[2025/09/16 v1.1 Simple invoice generation]
+
+\RequirePackage{hyperref}
+\RequirePackage{advdate}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+
+\newcommand{\invoiceTotal}{\\ \multicolumn{2}{r}{\bfseries Total Amount Due} & {\bfseries £\theInvoiceTotal}}
+\newcommand{\gig}[3]{#1&#2&\addtocounter{InvoiceTotal}{#3}£#3\\}
+\newcommand{\email}[1]{\href{mailto:#1}{#1}}
+\newcommand{\topsection}[2]{{\large \bfseries {#1}:}\\#2\vspace{\baselineskip}\\}
+\newcommand{\bankdetail}[2]{{\bfseries #1:}&#2\\}
+\newcommand{\bankdetails}[3]{%
+  \begin{tabular}{l@{\hspace{5mm}}l}
+    \bankdetail{Account Name}{#1}
+    \bankdetail{Sort Code}{#2}
+    \bankdetail{Account Number}{#3}
+  \end{tabular}
+}
+\newcounter{InvoiceTotal}
+
+
+\newcommand{\invoice}[4]{
+  \clearpage
+  \setcounter{InvoiceTotal}{0}
+  {\Huge \bfseries Invoice} \\
+  \vspace{2\baselineskip}
+
+  \begin{minipage}[t]{0.45\textwidth}
+    \topsection{Issue Date}{\today}
+    \AdvMonth{1}
+    \topsection{Due Date}{\today}
+  \end{minipage}%
+  \hspace{0.1\textwidth}%
+  \begin{minipage}[t]{0.45\textwidth} \raggedleft
+    \topsection{From}{#1}
+    \topsection{Invoice For}{#2}
+  \end{minipage}\\
+  \vspace{3\baselineskip}\\
+
+  \begingroup
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabularx}{\textwidth}{Xl@{\hspace{8mm}}r}
+      \bfseries Description & \bfseries Date & \bfseries Amount \\
+      #3
+      \invoiceTotal
+    \end{tabularx}
+  \endgroup
+
+  \renewcommand{\arraystretch}{1.0}
+
+  \vspace{5mm}
+  Please pay\\ \\
+  #4\\
+}
+\endinput
