@@ -39,7 +39,7 @@ All fields are plain text.
   }{
     \gig{Work on Monday}{15th September 2025}{8}%
     \gig{Work on Tuesday}{16th September 2025}{5}%
-    \gig{Work on Wednesday}{17th September 2025}{10}%
+    \gig{Work on Wednesday (a very long day, this one, so I got paid more than usual)}{17th September 2025}{10}%
     \gig{Work on Thursday}{18th September 2025}{7}%
     \gig{Work on Friday}{19th September 2025}{8}%
   }{
